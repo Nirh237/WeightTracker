@@ -34,16 +34,6 @@ pipeline {
                 PGPORT=5432" > .env
                                 '''
 
-                echo 'Building..'
-
-                sh 'sudo apt-get install -y nodejs'
-                sh 'sudo apt install -y npm'
-                sh 'npm install'
-                sh 'npm run initdb'
-                sh 'npm run dev'
-
-                echo 'Finished building process'
-
             }
         }
         stage('Test') {
