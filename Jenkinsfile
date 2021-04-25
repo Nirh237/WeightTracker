@@ -34,7 +34,7 @@ pipeline {
                 PGPASSWORD=password
                 PGPORT=5432" > .env
                                 '''
-	
+				}
 		}
             }
         }
