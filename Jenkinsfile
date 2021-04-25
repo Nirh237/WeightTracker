@@ -64,8 +64,8 @@ pipeline {
             }
         }
     }
-    post {
-        always {
+    stage('Create tar.gz') {
+        steps {
             echo 'Creating tar.gz file for artifacts'
             sh touch my_archive.tar.gz
             sh 'tar  --exclude=my_archive.tar.gz -zcvf my_archive.tar.gz /home/nirh237/workspace/CI'
