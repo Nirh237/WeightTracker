@@ -11,9 +11,9 @@ pipeline {
         }
         stage('Build') {
            		 steps {
-				script {
+				step {
 				
-		{
+		
                 echo 'creating .env file'
 
                 sh '''
@@ -34,7 +34,7 @@ pipeline {
                 PGPASSWORD=password
                 PGPORT=5432" > .env
                                 '''
-		    }
+	
 		}
             }
         }
