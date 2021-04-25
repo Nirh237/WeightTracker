@@ -2,68 +2,63 @@ pipeline {
     agent {label "slave"}
 
     stages {
-        
-        stage('Downlod_to_BlubStorage') {
-            steps {
-                // TODO - understanding how to do it
-                echo 'Downloding Repository from Jenkins to Blub storage'
-            }
-        }
             
         stage('Build') {
-            
-            // TODO: Create artifacts
+            // Creating env file 
             steps {
                     echo 'Building..'
                     script {
                     
-                        // TODO - to be Fixed (must cereate new VM linux)
                         echo 'creating .env file'
                         sh '''
-                            echo "# Host configuration
-			PORT=8080
-			HOST=0.0.0.0
-			NODE_ENV=development
-			HOST_URL=Http://20.86.114.177:8080
-			COOKIE_ENCRYPT_PWD=superAwesomePasswordStringThatIsAtLeast32CharactersLong!
-			# Okta configuration
-			OKTA_ORG_URL=https://dev-72046139.okta.com
-			OKTA_CLIENT_ID=0oan7xtk2lsVGQ9h25d6
-			OKTA_CLIENT_SECRET=KqbrK832bsa4RIWuFUpnqtQb8zuLkPq-6D4kDFEZ
-			# Postgres configuration
-			PGHOST=10.0.1.4
-			PGUSERNAME=postgres
-			PGDATABASE=postgres
-			PGPASSWORD=password
-			PGPORT=5432" > .env
+                        echo "# Host configuration
+                        PORT=8080
+                        HOST=0.0.0.0
+                        NODE_ENV=development
+                        HOST_URL=Http://20.86.114.177:8080
+               	        COOKIE_ENCRYPT_PWD=superAwesomePasswordStringThatIsAtLeast32CharactersLong!
+                        # Okta configuration
+                        OKTA_ORG_URL=https://dev-72046139.okta.com
+                        OKTA_CLIENT_ID=0oan7xtk2lsVGQ9h25d6
+                        OKTA_CLIENT_SECRET=KqbrK832bsa4RIWuFUpnqtQb8zuLkPq-6D4kDFEZ
+                        # Postgres configuration
+                        PGHOST=10.0.0.5
+                        PGUSERNAME=postgres
+                        PGDATABASE=postgres
+                        PGPASSWORD=password
+                        PGPORT=5432" > .env
                         '''
                         
                     }
             }
         }
-                
-        stage('Test') {
-            
-            steps {
-                echo 'Testing..'
-            }
-        }
         
         stage('Deploy') {
-            
+           // Running the application 
             steps {
                 echo 'Deploying....'
                 
                 sh 'curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -'
                 sh 'sudo apt-get install -y nodejs'
                 sh 'sudo apt-get install -y build-essential'
-                sh 'sudo apt install -y npm'
+                //sh 'cd workspace/pipeline-build'
                 sh 'npm install'
                 sh 'npm run initdb'
-                sh 'npm run dev'
+                sh 'sudo npm install pm2 -g'                                 // install pm2
+                sh 'pm2 stop src/index.js'
+                sh 'pm2 start src/index.js'
+                sh 'pm2 save'
+                //sh 'pm2 start npm -- run dev'                           // run "npm run dev" as a service in the background using pm2
+                //sh 'npm run dev'
                 
                 echo 'Finished building process'
                 
+            }
+        }
+        stage('Test') {
+            // TODO: Tesing
+            steps {
+                echo 'Testing..'
             }
         }
     }
@@ -71,7 +66,7 @@ pipeline {
     post {
         always {
             echo 'Creating tar.gz file for artifacts'
-            sh 'tar -zcvf /home/nirh237/my_archive.tar.gz /home/nirh237/workspace'
+            sh 'tar -zcvf /home/nirh237/my_archive.tar.gz /home/nirh237/workspace/pipeline-build'
             archiveArtifacts artifacts: 'my_archive.tar.gz', onlyIfSuccessful: true
         }
     }
