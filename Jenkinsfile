@@ -4,27 +4,6 @@ pipeline {
     stages {
         
         stage('Downlod_to_BlubStorage') {
-Expand
-message.txt
-3 KB
-עכשיו בדקתי שוב וזה עובד אבל רק ככה
-וככה נראה ה-jenkins
-
-שזה לפחות נראה יפה
-Genady — Today at 1:03 PM
-
-nirhez — Today at 1:07 PM
-זה גם התקין את כל מה שהרצת שם?
-Genady — Today at 1:15 PM
-לא זו עדיין בעיה של אתמול מה שאמרנו שנעזוב
-זה תחת deploy
-﻿
-pipeline {
-    agent {label "slave_build"}
-
-    stages {
-        
-        stage('Downlod_to_BlubStorage') {
             steps {
                 // TODO - understanding how to do it
                 echo 'Downloding Repository from Jenkins to Blub storage'
