@@ -64,11 +64,10 @@ pipeline {
             }
         }
     }
-    stage('Create tar.gz') {
-        steps {
+    post {
+        always {
             echo 'Creating tar.gz file for artifacts'
-            sh touch my_archive.tar.gz
-            sh 'tar  --exclude=my_archive.tar.gz -zcvf my_archive.tar.gz /home/nirh237/workspace/CI'
+            sh 'tar -zcvf /home/nirh237/my_archive.tar.gz   /home/nirh237/workspace/CI'
             archiveArtifacts artifacts: 'my_archive.tar.gz', onlyIfSuccessful: true
         }
     }
