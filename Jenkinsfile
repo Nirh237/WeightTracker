@@ -61,6 +61,7 @@ pipeline {
                 echo 'Testing..'
             }
         }
+    }
             stage('create artifact') {
                
             echo 'Creating tar.gz file for artifacts'
