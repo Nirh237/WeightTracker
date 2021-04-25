@@ -57,13 +57,7 @@ pipeline {
                 
             }
         }
-        stage('Test') {
-            // TODO: Tesing
-            steps {
-                echo 'Testing..'
-            }
-        }
-    }
+     
    stage ('Artifacts') {
 
 	        steps {
