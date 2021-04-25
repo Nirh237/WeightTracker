@@ -61,13 +61,14 @@ pipeline {
                 echo 'Testing..'
             }
         }
-    }
-
-    post {
-        always {
+            stage('create artifact') {
+         
             echo 'Creating tar.gz file for artifacts'
             sh 'tar -zcvf /home/nirh237/my_archive.tar.gz /home/nirh237/workspace/CI  --exclude /home/nirh237/workspace/CI@tmp'
             archiveArtifacts artifacts: 'my_archive.tar.gz', onlyIfSuccessful: true
-        }
+        
+            }
+
+
     }
 }
