@@ -11,6 +11,8 @@ pipeline {
                     
                         echo 'creating .env file'
                         sh '''
+                        set +e
+
                         echo "# Host configuration
                         PORT=8080
                         HOST=0.0.0.0
