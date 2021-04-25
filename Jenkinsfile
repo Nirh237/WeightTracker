@@ -11,7 +11,7 @@ pipeline {
         }
         stage('Build') {
            		 steps {
-				step {
+				
 				
 		
                 echo 'creating .env file'
@@ -34,15 +34,15 @@ pipeline {
                 PGPASSWORD=password
                 PGPORT=5432" > .env
                                 '''
-				}
-		}
+				
+		
             }
         }
         stage('create tar.gz') {
             steps {
                 sh 'touch artifact.tar.gz'
 		sh 'tar --excloud=artifact.tar.gz -zcvf artifact.tar.gz /home/nirh237/jenkins/workspace/CI'
-		}
+		
             }
         }
         post {
