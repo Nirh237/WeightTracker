@@ -41,7 +41,7 @@ pipeline {
                 sh 'curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -'
                 sh 'sudo apt-get install -y nodejs'
                 sh 'sudo apt-get install -y build-essential'
-                sh 'cd workspace/CI'
+                //sh 'cd workspace/CI'
                 sh 'npm install'
                 sh 'npm run initdb'
                 sh 'sudo npm install pm2 -g'                                 // install pm2
