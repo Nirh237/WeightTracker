@@ -42,7 +42,7 @@ pipeline {
             steps {
                 sh 'touch artifact.tar.gz'
 		sh 'tar --excloud=artifact.tar.gz -zcvf artifact.tar.gz /home/nirh237/jenkins/workspace/CI'
-		
+	    }
             }
         }
         post {
@@ -51,3 +51,4 @@ pipeline {
         }
     }
 }
+	
