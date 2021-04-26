@@ -61,16 +61,14 @@ pipeline {
    stage ('Artifacts') {
 
 	        steps {
-			
+			/*
 	          echo 'Creating tar.gz file for artifacts'
 	            sh 'touch my_archive.tar.gz'
 	            sh 'tar -zcvf /home/nirh237/my_archive.tar.gz /home/nirh237/workspace/CI'
 	            archiveArtifacts artifacts: 'my_archive.tar.gz', onlyIfSuccessful: true
-		    /*
-			 echo "ZIP"
-    zip zipFile: 'Test.zip', dir:'/home/nirh237/workspace/CI'
-    echo "END - ZIP"
-	       archiveArtifacts artifacts: 'Test.zip', onlyIfSuccessful: true */
+		    */
+		zip zipFile: "latest.zip", exclude: "*.zip", overwrite: true
+                archiveArtifacts artifacts: "latest.zip", followSymlinks: false
         }
     }
 
