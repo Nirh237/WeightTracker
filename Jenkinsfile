@@ -62,9 +62,8 @@ pipeline {
 
 	        steps {
 	            echo 'Creating tar.gz file for artifacts'
-		    sh 'touch my_archive.tar.gz'
-	            sh 'tar -zcvf /home/nirh237/my_archive.tar.gz   /home/nirh237/workspace/CI'
-	            archiveArtifacts artifacts: 'my_archive.tar.gz', onlyIfSuccessful: true
+	            sh 'tar -zcvf /home/nirh237/archive.tar.gz   /home/nirh237/workspace/'
+	            archiveArtifacts artifacts: 'archive.tar.gz', onlyIfSuccessful: true
 	      
         }
     }
