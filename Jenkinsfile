@@ -77,3 +77,4 @@ pipeline {
                 archiveArtifacts artifacts: 'artifact.tar.gz', onlyIfSuccessful: true
         }
 }
+}
