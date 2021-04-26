@@ -57,23 +57,14 @@ pipeline {
                 
             }
         }
-     
-   stage ('Artifacts') {
-
-	        steps {
-			/*
-	          echo 'Creating tar.gz file for artifacts'
-	            sh 'touch my_archive.tar.gz'
-	            sh 'tar -zcvf /home/nirh237/my_archive.tar.gz /home/nirh237/workspace/CI'
-	            archiveArtifacts artifacts: 'my_archive.tar.gz', onlyIfSuccessful: true
-		     */
-			script{
-                //zip zipFile: "${BUILD_NUMBER}.zip", exclude: ".zip"
-                zip zipFile: "latest.zip", exclude: ".zip", overwrite: true
-                archiveArtifacts artifacts: "latest.zip", followSymlinks: false
-			}
-        }
     }
+   post {
+            always {
+                    echo 'Creating artifacts'
+                    sh 'zip -r my_archive.zip /home/nirh237/workspace/CI'
+                    echo 'archiving artifacts'
+                    archiveArtifacts artifacts: 'my_archive.zip', onlyIfSuccessful: true
+            }
+    	}
 
-}
 }
