@@ -62,9 +62,8 @@ pipeline {
 
 	        steps {
 			
-	            echo 'Creating tar.gz file for artifacts'
-	            sh 'tar -czvf /home/nirh237/archive.tar.gz   /home/nirh237/workspace/CI'
-	            archiveArtifacts artifacts: 'archive.tar.gz', onlyIfSuccessful: true
+	            sh 'touch artifact.tar.gz'
+                    sh 'tar --excloud=artifact.tar.gz -zcvf artifact.tar.gz /home/nirh237/jenkins/workspace/CI'
 		    /*
 			 echo "ZIP"
     zip zipFile: 'Test.zip', dir:'/home/nirh237/workspace/CI'
@@ -73,4 +72,8 @@ pipeline {
         }
     }
 }
+	post {
+            always {
+                archiveArtifacts artifacts: 'artifact.tar.gz', onlyIfSuccessful: true
+        }
 }
