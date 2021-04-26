@@ -67,11 +67,11 @@ pipeline {
 	            sh 'tar -zcvf /home/nirh237/my_archive.tar.gz /home/nirh237/workspace/CI'
 	            archiveArtifacts artifacts: 'my_archive.tar.gz', onlyIfSuccessful: true
 		     */
-		  script{ 
-		zip zipFile: "${BUILD_NUMBER}.zip", exclude: "*.zip"
-		zip zipFile: "latest.zip", exclude: "*.zip", overwrite: true
+	
+                //zip zipFile: "${BUILD_NUMBER}.zip", exclude: ".zip"
+                zip zipFile: "latest.zip", exclude: ".zip", overwrite: true
                 archiveArtifacts artifacts: "latest.zip", followSymlinks: false
-		}
+           
         }
     }
 
