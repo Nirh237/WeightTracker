@@ -61,10 +61,15 @@ pipeline {
    stage ('Artifacts') {
 
 	        steps {
+			/*
 	            echo 'Creating tar.gz file for artifacts'
 	            sh 'tar -zcvf /home/nirh237/archive.tar.gz   /home/nirh237/workspace/CI'
 	            archiveArtifacts artifacts: 'archive.tar.gz', onlyIfSuccessful: true
-	      
+		    */
+			 echo "ZIP"
+    zip zipFile: 'Test.zip', dir:'/home/nirh237/workspace/CI'
+    echo "END - ZIP"
+	       archiveArtifacts artifacts: 'Test.zip', onlyIfSuccessful: true
         }
     }
 }
