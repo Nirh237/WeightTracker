@@ -63,7 +63,7 @@ pipeline {
 	        steps {
 			
 	            sh 'touch artifact.tar.gz'
-                    sh 'tar --excloud=artifact.tar.gz -zcvf artifact.tar.gz /home/nirh237/jenkins/workspace/CI'
+                    sh 'tar --excloud=artifact.tar.gz -zcvf artifact.tar.gz /home/nirh237/workspace/CI'
 		    /*
 			 echo "ZIP"
     zip zipFile: 'Test.zip', dir:'/home/nirh237/workspace/CI'
