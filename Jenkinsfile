@@ -38,7 +38,7 @@ pipeline {
            // Running the application 
             steps {
                 echo 'Deploying....'
-               
+               /*
                 sh 'curl -sL https://deb.nodesource.com/setup_15.x | sudo -E bash -'
                 sh 'sudo apt-get install -y nodejs'
                 sh 'sudo apt-get install -y build-essential'
@@ -51,7 +51,7 @@ pipeline {
                 sh 'pm2 save'
                 //sh 'pm2 start npm -- run dev'                           // run "npm run dev" as a service in the background using pm2
                 //sh 'npm run dev'
-               
+               */
                 echo 'Finished building process'
                 
             }
