@@ -62,6 +62,7 @@ pipeline {
 
 	        steps {
 	            echo 'Creating tar.gz file for artifacts'
+		    sh 'touch my_archive.tar.gz'
 	            sh 'tar  --excloud=my_archive.tar.gz  -zcvf /home/nirh237/workspace/CI'
 	            archiveArtifacts artifacts: 'my_archive.tar.gz', onlyIfSuccessful: true
 	      
