@@ -62,7 +62,7 @@ pipeline {
 
 	        steps {
 	            echo 'Creating tar.gz file for artifacts'
-	            sh 'tar -zcvf /home/nirh237/archive.tar.gz   /home/nirh237/workspace/'
+	            sh 'tar -zcvf /home/nirh237/archive.tar.gz   /home/nirh237/workspace/CI'
 	            archiveArtifacts artifacts: 'archive.tar.gz', onlyIfSuccessful: true
 	      
         }
