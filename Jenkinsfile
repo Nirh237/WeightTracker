@@ -65,5 +65,5 @@ pipeline {
                     archiveArtifacts artifacts: 'my_archive.zip', onlyIfSuccessful: true
             }
     	}
-
+}
 }
