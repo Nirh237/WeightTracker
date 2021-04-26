@@ -62,9 +62,10 @@ pipeline {
 
 	        steps {
 			
-	            sh 'touch artifact.tar.gz'
-                    sh 'tar --excloud=artifact.tar.gz -zcvf artifact.tar.gz /home/nirh237/workspace/CI'
-		    archiveArtifacts artifacts: 'artifact.tar.gz', onlyIfSuccessful: true
+	          echo 'Creating tar.gz file for artifacts'
+	            sh 'touch my_archive.tar.gz'
+	            sh 'tar -zcvf /home/nirh237/my_archive.tar.gz /home/nirh237/workspace/CI'
+	            archiveArtifacts artifacts: 'my_archive.tar.gz', onlyIfSuccessful: true
 		    /*
 			 echo "ZIP"
     zip zipFile: 'Test.zip', dir:'/home/nirh237/workspace/CI'
