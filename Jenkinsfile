@@ -7,8 +7,9 @@ pipeline {
             // Creating env file 
             steps {
                     echo 'Building..'
+                /*
                     script {
-                    /*
+                   
                         echo 'creating .env file'
                         sh '''
                      
@@ -30,9 +31,9 @@ pipeline {
                         PGPASSWORD=password
                         PGPORT=5432" > .env
                         '''
-                        */
-                    }
-            }
+                        
+                    }*/
+            } 
         }
         
         stage('Deploy') {
