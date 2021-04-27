@@ -46,7 +46,7 @@ pipeline {
                 //sh 'cd workspace/CI'
                 sh 'sudo npm install'
                 sh 'sudo npm run initdb'
-                sh 'sudo npm install pm2 -g'                                 // install pm2
+                sh 'sudo npm install pm2 -g'                                 // install pm
                 //sh 'pm2 stop src/index.js'
                 sh 'pm2 start -f src/index.js'
                 sh 'pm2 save'
