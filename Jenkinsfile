@@ -8,11 +8,11 @@ pipeline {
             steps {
                     echo 'Building..'
                     script {
-                    
+                    /*
                         echo 'creating .env file'
                         sh '''
                      
-
+                        
                         echo "# Host configuration
                         PORT=8080
                         HOST=0.0.0.0
@@ -30,7 +30,7 @@ pipeline {
                         PGPASSWORD=password
                         PGPORT=5432" > .env
                         '''
-                        
+                        */
                     }
             }
         }
