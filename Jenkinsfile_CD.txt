@@ -19,7 +19,7 @@ pipeline {
             steps {
                     echo 'Building..'
                      script {
-                        withCredentials([string(credentialsId: 'ok_client_id', variable: 'OKTA_CLIENT_ID'), string(credentialsId: 'ok_client_secret', variable:'OKTA_CLIENT_SECRET')])
+                        withCredentials([string(credentialsId: 'ok_client_id', variable: 'OKTA_CLIENT_ID'), string(credentialsId: 'ok_client_secret', variable:'OKTA_CLIENT_SECRET')]) {
                     
                         echo 'creating .env file'
                         sh '''
@@ -41,7 +41,7 @@ pipeline {
                         PGPASSWORD=password
                         PGPORT=5432" > .env
                         '''
-                        
+                        }
                     }
             }
         }
