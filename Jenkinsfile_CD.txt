@@ -19,7 +19,7 @@ pipeline {
             steps {
                     echo 'Building..'
                      script {
-                        withCredentials([string(credentialsId: 'ok_client_id', variable: 'clientid'), string(credentialsId: 'ok_client_secret', variable: 'client_secret')])
+                        withCredentials([string(credentialsId: 'ok_client_id', variable: 'OKTA_CLIENT_ID'), string(credentialsId: 'ok_client_secret', variable:'OKTA_CLIENT_SECRET')])
                     
                         echo 'creating .env file'
                         sh '''
@@ -32,8 +32,8 @@ pipeline {
                	        COOKIE_ENCRYPT_PWD=superAwesomePasswordStringThatIsAtLeast32CharactersLong!
                         # Okta configuration
                         OKTA_ORG_URL=https://dev-72046139.okta.com
-                        OKTA_CLIENT_ID=$clientid
-                        OKTA_CLIENT_SECRET=$client_secret
+                        OKTA_CLIENT_ID=$OKTA_CLIENT_ID
+                        OKTA_CLIENT_SECRET=$OKTA_CLIENT_SECRET
                         # Postgres configuration
                         PGHOST=10.0.1.4
                         PGUSERNAME=postgres
