@@ -2,6 +2,11 @@ pipeline {
     agent {label "slave-ci"}
 
     stages {
+        
+        stage('clean_ws') {
+            steps {
+                cleanWs()
+            }
             
         stage('Build') {
             // Creating env file 
