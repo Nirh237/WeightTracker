@@ -7,6 +7,7 @@ pipeline {
             steps {
                 cleanWs()
             }
+        }
             
         stage('Build') {
             // Creating env file 
